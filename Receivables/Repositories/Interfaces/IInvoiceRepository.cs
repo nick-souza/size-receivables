@@ -4,10 +4,9 @@ namespace Receivables.Repositories;
 
 public interface IInvoiceRepository
 {
-    Task<Invoice> GetByIdAsync(int id);
-    Task<Invoice> AddAsync(Invoice company);
-    Task<IEnumerable<Invoice>> SelectByCompanyIdAsync(Invoice company);
-    Task<IEnumerable<Invoice>> SelectAsync();
-    Task UpdateAsync(Invoice company);
-    Task DeleteAsync(int id);
+    Task<Invoice?> GetByIdAsync(long number);
+    Task<Invoice> AddAsync(Invoice model);
+    Task<List<Invoice>> SelectByCompanyIdAsync(string cnpj);
+    Task<List<Invoice>> SelectAsync();
+    Task DeleteAsync(Invoice invoice);
 }

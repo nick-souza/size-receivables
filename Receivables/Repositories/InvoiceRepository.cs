@@ -1,18 +1,27 @@
-﻿using Receivables.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Receivables.Entities;
 
 namespace Receivables.Repositories;
 
-public class InvoiceRepository : IInvoiceRepository
+public class InvoiceRepository(AppDbContext context) : IInvoiceRepository
 {
-    public Task<Invoice> GetByIdAsync(int id) { throw new NotImplementedException(); }
+    public async Task<Invoice?> GetByIdAsync(long number) => await context.Invoice.FirstOrDefaultAsync(x => x.Number == number);
 
-    public Task<Invoice> AddAsync(Invoice company) { throw new NotImplementedException(); }
+    public async Task<Invoice> AddAsync(Invoice invoice)
+    {
+        context.Invoice.Add(invoice);
+        await context.SaveChangesAsync();
 
-    public Task<IEnumerable<Invoice>> SelectByCompanyIdAsync(Invoice company) { throw new NotImplementedException(); }
+        return invoice;
+    }
 
-    public Task<IEnumerable<Invoice>> SelectAsync() { throw new NotImplementedException(); }
+    public async Task<List<Invoice>> SelectByCompanyIdAsync(string cnpj) => await context.Invoice.Where(x => x.Cnpj == cnpj).ToListAsync();
 
-    public Task UpdateAsync(Invoice company) { throw new NotImplementedException(); }
+    public async Task<List<Invoice>> SelectAsync() => await context.Invoice.ToListAsync();
 
-    public Task DeleteAsync(int id) { throw new NotImplementedException(); }
+    public async Task DeleteAsync(Invoice invoice)
+    {
+        context.Invoice.Remove(invoice);
+        await context.SaveChangesAsync();
+    }
 }
