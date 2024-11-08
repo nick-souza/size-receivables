@@ -1,0 +1,16 @@
+﻿services:
+#  receivables:
+#    image: receivables
+#    build:
+#      context: .
+#      dockerfile: Receivables/Dockerfile
+  db:
+    container_name: db
+    build:
+      context: .
+      dockerfile: DockerFileDb
+    ports:
+      - "1433:1433"
+    environment:
+      MSSQL_SA_PASSWORD: Password1
+      ACCEPT_EULA: Y
