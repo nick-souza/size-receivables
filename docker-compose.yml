@@ -1,6 +1,5 @@
 ﻿services:
   api:
-    image: receivables
     container_name: api
     build:
       context: .
