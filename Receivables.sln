@@ -6,6 +6,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
 		init.sql = init.sql
+		DockerFileDb = DockerFileDb
+		entrypoint.sh = entrypoint.sh
+		configure-db.sh = configure-db.sh
 	EndProjectSection
 EndProject
 Global
