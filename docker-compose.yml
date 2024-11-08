@@ -1,6 +1,7 @@
 ﻿services:
-  receivables:
+  api:
     image: receivables
+    container_name: api
     build:
       context: .
       dockerfile: Receivables/Dockerfile
