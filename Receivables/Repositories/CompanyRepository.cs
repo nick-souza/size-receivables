@@ -1,16 +1,33 @@
-﻿using Receivables.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Receivables.Entities;
 
 namespace Receivables.Repositories;
 
-public class CompanyRepository : ICompanyRepository
+public class CompanyRepository(AppDbContext context) : ICompanyRepository
 {
-    public Task<Company> GetByIdAsync(int id) { throw new NotImplementedException(); }
+    public async Task<Company?> GetByIdAsync(string cnpj) => await context.Company.Include(x => x.Invoices).FirstOrDefaultAsync(x => x.Cnpj == cnpj);
 
-    public Task<Company> AddAsync(Company company) { throw new NotImplementedException(); }
+    public async Task<Company> AddAsync(Company company)
+    {
+        context.Company.Add(company);
+        await context.SaveChangesAsync();
 
-    public Task<IEnumerable<Company>> SelectAsync() { throw new NotImplementedException(); }
+        return company;
+    }
 
-    public Task UpdateAsync(Company company) { throw new NotImplementedException(); }
+    public async Task<List<Company>> SelectAsync() => await context.Company.Include(x => x.Invoices).ToListAsync();
 
-    public Task DeleteAsync(int id) { throw new NotImplementedException(); }
+    public async Task UpdateAsync(Company company)
+    {
+        context.Company.Update(company);
+        await context.SaveChangesAsync();
+    }
+
+    public async Task DeleteAsync(Company company)
+    {
+        context.Invoice.RemoveRange(context.Invoice.Where(x => x.Cnpj == company.Cnpj));
+        context.Company.Remove(company);
+
+        await context.SaveChangesAsync();
+    }
 }
