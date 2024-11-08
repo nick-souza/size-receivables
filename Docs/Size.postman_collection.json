@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "b3a46079-660c-45f6-a639-c24f80d31d0f",
+		"name": "Size",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18390079"
+	},
+	"item": [
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "Select",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5282/api/v1/company",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5282",
+							"path": [
+								"api",
+								"v1",
+								"company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5282/api/v1/company/12345678911112",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5282",
+							"path": [
+								"api",
+								"v1",
+								"company",
+								"12345678911112"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cnpj\": \"12345678911112\",\r\n    \"name\": \"Empresa Teste\",\r\n    \"monthlyBilling\": 83333,\r\n    \"sector\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5282/api/v1/company",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5282",
+							"path": [
+								"api",
+								"v1",
+								"company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cnpj\": \"12345678911112\",\r\n    \"name\": \"Company2\"\r\n    // \"monthlyBilling\": 1010,\r\n    // \"sector\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5282/api/v1/company/12345678911112",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5282",
+							"path": [
+								"api",
+								"v1",
+								"company",
+								"12345678911112"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5282/api/v1/company/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5282",
+							"path": [
+								"api",
+								"v1",
+								"company",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Checkout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[1,10,11]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5282/api/v1/company/12345678911111/checkout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5282",
+							"path": [
+								"api",
+								"v1",
+								"company",
+								"12345678911111",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "Select",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5282/api/v1/invoice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5282",
+							"path": [
+								"api",
+								"v1",
+								"invoice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5282/api/v1/invoice/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5282",
+							"path": [
+								"api",
+								"v1",
+								"invoice",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number\": 9999,\r\n    \"value\": 10,\r\n    \"dueDate\": \"01/12/2024\",\r\n    \"cnpj\": \"12345678911112\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5282/api/v1/invoice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5282",
+							"path": [
+								"api",
+								"v1",
+								"invoice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5282/api/v1/invoice/9999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5282",
+							"path": [
+								"api",
+								"v1",
+								"invoice",
+								"9999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
